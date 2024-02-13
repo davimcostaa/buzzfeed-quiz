@@ -1,3 +1,27 @@
 <div class="quiz__container">
-  
+  <div class="quiz_logo">
+    <img src="assets/images/logo.png" alt="">
+    <h3>{{title}}</h3>
+  </div>
+
+  <div class="quiz_questions">
+    <h3>{{questionSelected.question}}</h3>
+  </div>
+
+  <div *ngIf=!finished class="quiz_options">
+    <button
+      *ngFor="let option of questionSelected.options; let i = index"
+      (click) = "playerChoice(option.alias)"
+      class="btn-option"
+    >
+      {{option.name}}
+    </button>
+  </div>
+
+  <div *ngIf=finished class="quiz_results">
+    <h1>O seu resultado é: </h1>
+    <p>{{answerSelected}}</p>
+    <img *ngIf="finalAnswer == 'B'" src="https://media1.tenor.com/m/QXVs4QWLlzkAAAAC/spider-man.gif" alt="Gif do Homem Aranha" />
+    <img *ngIf="finalAnswer == 'A'"  src="https://i.pinimg.com/originals/32/f5/fd/32f5fde1bb24fe4376bd17a105aba511.gif" alt="Gif do Homem Aranha" />
+  </div>
 </div>
